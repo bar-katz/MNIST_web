@@ -22,13 +22,13 @@ web site for testing neural networks on MNIST data set using 2 hidden layers
 ##### General Settings
 - `neural_net` - the neural net you want to use out of {"Basic", "Dropout", "Batch_norm", "Combine"}
 - `epochs` - number of passes on all the data
-- `learning_rate` - learning rate of the network
-- `batch_size` - passing on data using *batch_size* number of samples each iteration
-- `valid_split` - split your train data to validation and training and evalute the network each epoch
+- `learning_rate` - learning rate of the network {_small values like_ 0.01, 0.005, 0.001}
+- `batch_size` - passing on data using *batch_size* number of samples each iteration {normally 64}
+- `valid_split` - split your train data to validation and training and evalute the network each epoch {range 0 to 1}
 
 ##### Structure Settings
-- `hidden1_size` - number of neurons on the first hidden layer
-- `hidden2_size` - number of neurons on the second hidden layer
+- `hidden1_size` - number of neurons on the first hidden layer {default 100}
+- `hidden2_size` - number of neurons on the second hidden layer {default 50}
 
 ##### Options
 - `write_test_pred` - write predictions to file 'test.pred', **number** to represent a boolean(_due to a bug in passing a boolean from node.js to python_) {0, 1}
