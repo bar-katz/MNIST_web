@@ -1,6 +1,0 @@
-{
-    "python.pythonPath": "C:\\Users\\Bar\\Anaconda3\\python.exe",
-    "python.formatting.provider": "autopep8",
-    "files.autoSave": "onFocusChange",
-    "editor.formatOnSave": true
-}
