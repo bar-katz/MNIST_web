@@ -16,5 +16,8 @@
     "neural_net"
   ],
   "author": "Bar Katz",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
