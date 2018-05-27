@@ -137,7 +137,7 @@ def train(epoch, model, train_loader, optimizer):
         correct_train += pred.eq(labels.data.view_as(pred)).cpu().sum()
 
     train_loss /= len(train_loader)
-    print('Train Epoch: {}\nAccuracy {}/{} ({:.0f}%)\nAverage loss: {:.6f}'.format(
+    print('Train Epoch: {}\tAccuracy {}/{} ({:.0f}%)\tAverage loss: {:.6f}'.format(
         epoch, correct_train, len(train_loader) * batch_size,
         100. * correct_train / (len(train_loader) * batch_size), train_loss))
 
@@ -156,7 +156,7 @@ def validation(epoch, model, valid_loader):
         correct_valid += pred.eq(label.data.view_as(pred)).cpu().sum()
 
     valid_loss /= (len(valid_loader) * batch_size)
-    print('Validation Epoch: {}\nAccuracy: {}/{} ({:.0f}%)\nAverage loss: {:.6f}'.format(
+    print('Validation Epoch: {}\tAccuracy: {}/{} ({:.0f}%)\tAverage loss: {:.6f}'.format(
         epoch, correct_valid, (len(valid_loader) * batch_size),
         100. * correct_valid / (len(valid_loader) * batch_size), valid_loss))
 
@@ -178,7 +178,7 @@ def test(model, test_loader):
         correct += pred.eq(target.data.view_as(pred)).cpu().sum()
 
     test_loss /= len(test_loader.dataset)
-    print('\nTest set:\nAccuracy: {}/{} ({:.0f}%)\nAverage loss: {:.4f}'.format(
+    print('\nTest set:\tAccuracy: {}/{} ({:.0f}%)\tAverage loss: {:.4f}'.format(
         correct, len(test_loader.dataset), 100. * correct / len(test_loader.dataset), test_loss))
 
     return predictions
@@ -216,7 +216,7 @@ def init_params():
 
     # Add arguments
     parser.add_argument(
-        '-a', '--neural_net', type=str, help='Neural net', required=False, default='Basic')
+        '-n', '--neural_net', type=str, help='Neural net', required=False, default='Basic')
     parser.add_argument(
         '-e', '--epochs', type=int, help='Number of epochs', required=False, default=10)
     parser.add_argument(
@@ -231,9 +231,9 @@ def init_params():
     parser.add_argument(
         '-h2', '--hidden2_size', type=int, help='Second hidden layer size', required=False, default=50)
     parser.add_argument(
-        '-w', '--write', type=bool, help='Write test set predictions to file', required=False, default=False)
+        '-w', '--write', type=int, help='Write test set predictions to file', required=False, default=0)
     parser.add_argument(
-        '-d', '--draw', type=bool, help='Draw validation and train loss graph', required=False, default=False)
+        '-d', '--draw', type=int, help='Draw validation and train loss graph', required=False, default=0)
 
     # Array for all arguments passed to script
     args = parser.parse_args()
@@ -256,8 +256,16 @@ def init_params():
     valid_split = args.validation_split
     hidden1_size = args.hidden1_size
     hidden2_size = args.hidden2_size
-    write_test_pred = args.write
-    draw_loss_graph = args.draw
+
+    if args.write == 0:
+        write_test_pred = False
+    else:
+        write_test_pred = True
+
+    if args.draw == 0:
+        draw_loss_graph = False
+    else:
+        draw_loss_graph = True
 
 
 def get_data_loaders():
@@ -335,14 +343,16 @@ def write_to_file(predictions):
 def draw_loss(x, train_y, valid_y):
     fig = plt.figure(0)
     fig.canvas.set_window_title('Train loss VS Validation loss')
+
     plt.axis([0, 11, 0, 2])
     plt.xlabel('epoch')
     plt.ylabel('loss')
-    plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
 
     train_graph, = plt.plot(x, train_y, 'r--', label='Train loss')
 
-    plt.plot(x, valid_y, label='Validation loss')
+    valid_graph, = plt.plot(x, valid_y, 'b', label='Validation loss')
+
+    plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
 
     plt.legend(handler_map={train_graph: HandlerLine2D(numpoints=4)})
     plt.show()
@@ -351,14 +361,16 @@ def draw_loss(x, train_y, valid_y):
 def main():
 
     init_params()
+    print(str(neural_net) + str(epochs) + str(learning_rate) + str(batch_size) + str(valid_split) + str(hidden1_size) +
+          str(hidden2_size) +
+          str(write_test_pred) +
+          str(draw_loss_graph))
 
     train_loader, valid_loader, test_loader = get_data_loaders()
 
     model = neural_net(image_size=mnist_image_size)
 
     train_model(model, train_loader, valid_loader, test_loader)
-
-    return "hello there!!!"
 
 
 if __name__ == '__main__':
