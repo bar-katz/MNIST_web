@@ -11,6 +11,7 @@ from torchvision import datasets
 import matplotlib.pyplot as plt
 import argparse
 
+
 __author__ = 'Bar Katz'
 
 
@@ -264,8 +265,10 @@ def get_data_loaders():
         transforms.ToTensor(),
         transforms.Normalize((0.1307,), (0.3081,))])
 
-    train_ds = datasets.FashionMNIST('./train_data', train=True, download=True, transform=tran)
-    test_ds = datasets.FashionMNIST('./test_data', train=False, download=True, transform=tran)
+    train_ds = datasets.FashionMNIST(
+        './train_data', train=True, download=True, transform=tran)
+    test_ds = datasets.FashionMNIST(
+        './test_data', train=False, download=True, transform=tran)
 
     num_train = len(train_ds)
     indices = list(range(num_train))
@@ -354,6 +357,8 @@ def main():
     model = neural_net(image_size=mnist_image_size)
 
     train_model(model, train_loader, valid_loader, test_loader)
+
+    return "hello there!!!"
 
 
 if __name__ == '__main__':
