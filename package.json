@@ -18,6 +18,8 @@
   "author": "Bar Katz",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.3"
+    "chalk": "^2.4.1",
+    "express": "^4.16.3",
+    "python-shell": "^0.5.0"
   }
 }
