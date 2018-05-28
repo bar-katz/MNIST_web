@@ -21,9 +21,7 @@
     "chalk": "^2.4.1",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
-    "fs": "0.0.1-security",
     "morgan": "^1.9.0",
-    "path": "^0.12.7",
     "python-shell": "^0.5.0",
     "querystring": "^0.2.0"
   }

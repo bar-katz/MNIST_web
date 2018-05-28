@@ -35,11 +35,15 @@ A website for testing neural networks on MNIST data set using 2 hidden layers.
     npm install express
     npm install express-handlebars
     npm install python-shell
+    npm install morgan
+    npm install querystring
     ```
 
 5. Run the server by typing `node server.js` in the cmd.
 
-6. Your server is now ready for requests (*UI in progress*).<br/>Send an HTTP post request with JSON, following the syntax below.
+6. Your server is now ready for requests.<br/>In the browser type `http://localhost:8000/`, fill the form and send.
+
+7. Wait for network's results.
 
 ## Syntax
 

@@ -1,16 +1,31 @@
 <!--action specifies that form be handled on the same page-->
 <div>
     <form action='/' method='POST'>
-        <input type='text' name='neural_net' />
+        Neural Network Setting:&nbsp;&nbsp;&nbsp;&nbsp;
+        <select name="neural_net">
+            <option value="Basic">Basic nn</option>
+            <option value="Dropout">nn with dropout</option>
+            <option value="Batch_norm">nn with batch normalization</option>
+            <option value="Conv">nn with convolution</option>
+            <option value="Combine">nn with all of the above</option>
+        </select>
+        <br> Number of Epochs - [recommended 10]&nbsp;&nbsp;&nbsp;&nbsp;
         <input type='int' name='epochs' />
+        <br> Learning Rate - [recommended 0.01]&nbsp;&nbsp;&nbsp;&nbsp;
         <input type='float' name='learning_rate' />
+        <br> Batch Size - [recommended 64]&nbsp;&nbsp;&nbsp;&nbsp;
         <input type='int' name='batch_size' />
+        <br> Validation Split - range [0, 1]:&nbsp;&nbsp;&nbsp;&nbsp;
         <input type='float' name='valid_split' />
+        <br> First Hidden Layer Neurons:&nbsp;&nbsp;&nbsp;&nbsp;
         <input type='int' name='hidden1_size' />
+        <br> Second Hidden Layer Neurons:&nbsp;&nbsp;&nbsp;&nbsp;
         <input type='int' name='hidden2_size' />
+        <br> Write perdictions to file: [0 - false, 1 - true]&nbsp;&nbsp;&nbsp;&nbsp;
         <input type='int' name='write_test_pred' />
+        <br> Draw Loss Graphs: [0 - false, 1 - true]&nbsp;&nbsp;&nbsp;&nbsp;
         <input type='int' name='draw_loss_graph' />
-        <button>Save</button>
+        <button>Send</button>
     </form>
 
 
