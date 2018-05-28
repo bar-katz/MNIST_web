@@ -1,6 +1,6 @@
 # MNIST web
 
-A web site for testing neural networks on MNIST data set using 2 hidden layers.
+A website for testing neural networks on MNIST data set using 2 hidden layers.
 
 ## Required Software
 
