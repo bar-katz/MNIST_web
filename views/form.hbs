@@ -1,8 +1,40 @@
 <!--action specifies that form be handled on the same page-->
 <div>
-    <form action='/Calculate' method='GET'>
-        <input type='text' name='name' />
-        <input type='email' name='email' />
-        <input type='submit' />
+    <form action='/' method='POST'>
+        <input type='text' name='neural_net' />
+        <input type='int' name='epochs' />
+        <input type='float' name='learning_rate' />
+        <input type='int' name='batch_size' />
+        <input type='float' name='valid_split' />
+        <input type='int' name='hidden1_size' />
+        <input type='int' name='hidden2_size' />
+        <input type='int' name='write_test_pred' />
+        <input type='int' name='draw_loss_graph' />
+        <button>Save</button>
     </form>
+
+
+    <div id="output">
+
+    </div>
+
+    <script>
+        $('form').on('submit', function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: '/',
+                type: 'POST',
+                success: function (data) {
+                    if (data.message) {
+                        $('#output').html(data.message);
+                    } else {
+                        $('#output').html('Sorry, an error occured');
+                    }
+                },
+                error: function () {
+                    $('#output').html('Sorry, an error occurred');
+                }
+            });
+        }
+    </script>
 </div>
