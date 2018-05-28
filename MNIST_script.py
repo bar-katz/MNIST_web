@@ -361,10 +361,6 @@ def draw_loss(x, train_y, valid_y):
 def main():
 
     init_params()
-    print(str(neural_net) + str(epochs) + str(learning_rate) + str(batch_size) + str(valid_split) + str(hidden1_size) +
-          str(hidden2_size) +
-          str(write_test_pred) +
-          str(draw_loss_graph))
 
     train_loader, valid_loader, test_loader = get_data_loaders()
 
