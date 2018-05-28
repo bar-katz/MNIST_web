@@ -20,7 +20,6 @@ app.get('/', function (req, res) {
     console.log('client get request: ')
     console.log(req.query)
     res.render('form', { title: 'Network calculation request' });
-    // res.sendFile(__dirname + '/website/form.html')
 });
 
 // TODO right now form.hbs is main -- make index.hbs main page with link to form.hbs
