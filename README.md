@@ -16,9 +16,9 @@ web site for testing neural networks on MNIST data set using 2 hidden layers
 
 3. run the server by typing `node server.js` in the cmd.
 
-4. your server is ready for requests(*UI in progress*) send a http post request with JSON following the syntex below.
+4. your server is ready for requests(*UI in progress*) send a http post request with JSON following the syntax below.
 
-### Syntex
+### Syntax
 ##### General Settings
 - `neural_net` - the neural net you want to use out of {"Basic", "Dropout", "Batch_norm", "Combine"}
 - `epochs` - number of passes on all the data
