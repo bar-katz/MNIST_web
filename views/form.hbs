@@ -1,8 +1,8 @@
 <!--action specifies that form be handled on the same page-->
 <div>
-    <form action='/' method='POST'>
+    <form id="net_calc_req" action="http://localhost:8000/" method="POST">
         Neural Network Setting:&nbsp;&nbsp;&nbsp;&nbsp;
-        <select name="neural_net">
+        <select id="neural_net" name="neural_net">
             <option value="Basic">Basic nn</option>
             <option value="Dropout">nn with dropout</option>
             <option value="Batch_norm">nn with batch normalization</option>
@@ -10,22 +10,22 @@
             <option value="Combine">nn with all of the above</option>
         </select>
         <br> Number of Epochs - [recommended 10]&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type='int' name='epochs' />
+        <input id="epochs" type='int' name='epochs' />
         <br> Learning Rate - [recommended 0.01]&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type='float' name='learning_rate' />
+        <input id="learning_rate" type='float' name='learning_rate' />
         <br> Batch Size - [recommended 64]&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type='int' name='batch_size' />
+        <input id="batch_size" type='int' name='batch_size' />
         <br> Validation Split - range [0, 1]:&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type='float' name='valid_split' />
+        <input id="valid_split" type='float' name='valid_split' />
         <br> First Hidden Layer Neurons:&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type='int' name='hidden1_size' />
+        <input id="hidden1_size" type='int' name='hidden1_size' />
         <br> Second Hidden Layer Neurons:&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type='int' name='hidden2_size' />
+        <input id="hidden2_size" type='int' name='hidden2_size' />
         <br> Write perdictions to file: [0 - false, 1 - true]&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type='int' name='write_test_pred' />
+        <input id="write_test_pred" type='int' name='write_test_pred' />
         <br> Draw Loss Graphs: [0 - false, 1 - true]&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type='int' name='draw_loss_graph' />
-        <button>Send</button>
+        <input id="draw_loss_graph" type='int' name='draw_loss_graph' />
+        <input type="submit" name="Send">
     </form>
 
 
@@ -34,22 +34,42 @@
     </div>
 
     <script>
-        $('form').on('submit', function (e) {
-            e.preventDefault();
-            $.ajax({
-                url: '/',
-                type: 'POST',
-                success: function (data) {
-                    if (data.message) {
-                        $('#output').html(data.message);
-                    } else {
-                        $('#output').html('Sorry, an error occured');
-                    }
-                },
-                error: function () {
-                    $('#output').html('Sorry, an error occurred');
-                }
+        $(document).ready(function () {
+            $('#net_calc_req').submit(function (e) {
+                e.preventDefault();
+
+                var neural_net = $('#neural_net').val();
+                var epochs = $('#epochs').val();
+                var learning_rate = $('#learning_rate').val();
+                var batch_size = $('#batch_size').val();
+                var valid_split = $('#valid_split').val();
+                var hidden1_size = $('#hidden1_size').val();
+                var hidden2_size = $('#hidden2_size').val();
+                var write_test_pred = $('#write_test_pred').val();
+                var draw_loss_graph = $('#draw_loss_graph').val();
+
+                $.post("http://localhost:8000/",
+                    {
+                        neural_net: neural_net,
+                        epochs: epochs,
+                        learning_rate: learning_rate,
+                        batch_size: batch_size,
+                        valid_split: valid_split,
+                        hidden1_size: hidden1_size,
+                        hidden2_size: hidden2_size,
+                        write_test_pred: write_test_pred,
+                        draw_loss_graph: draw_loss_graph
+                    },
+                    function (data) {
+
+                        $('#output').html("<p>" + data + "</p>");
+                    }).error(function () {
+                        alert("request failed, please try again later");
+                    });
+
             });
-        }
+        });
     </script>
+
+
 </div>

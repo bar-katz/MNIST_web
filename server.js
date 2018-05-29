@@ -60,7 +60,10 @@ app.post('/', function (req, res) {
 
         pythonShell.run('MNIST_script.py', options, function (err, results) {
             if (err) res.end(err.message);
-            else res.end(results.toString());
+            else {
+                var format_results = results.toString().replace(new RegExp(',', 'g'), '<br>');
+                res.end(format_results);
+            }
         });
     });
 

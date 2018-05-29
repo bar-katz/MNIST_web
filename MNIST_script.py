@@ -178,7 +178,8 @@ def test(model, test_loader):
         correct += pred.eq(target.data.view_as(pred)).cpu().sum()
 
     test_loss /= len(test_loader.dataset)
-    print('\nTest set:\tAccuracy: {}/{} ({:.0f}%)\tAverage loss: {:.4f}'.format(
+    print('')
+    print('Test set:\tAccuracy: {}/{} ({:.0f}%)\tAverage loss: {:.4f}'.format(
         correct, len(test_loader.dataset), 100. * correct / len(test_loader.dataset), test_loss))
 
     return predictions
