@@ -1,7 +1,8 @@
 <!--action specifies that form be handled on the same page-->
-<div>
+<div class="form-style">
+    <h2>Enter Network Parmeters</h2>
     <form id="net_calc_req" action="http://localhost:8000/" method="POST">
-        Neural Network Setting:&nbsp;&nbsp;&nbsp;&nbsp;
+        Neural Network Setting
         <select id="neural_net" name="neural_net">
             <option value="Basic">Basic nn</option>
             <option value="Dropout">nn with dropout</option>
@@ -9,21 +10,21 @@
             <option value="Conv">nn with convolution</option>
             <option value="Combine">nn with all of the above</option>
         </select>
-        <br> Number of Epochs - [recommended 10]&nbsp;&nbsp;&nbsp;&nbsp;
+        <br> Number of Epochs - [recommended 10]
         <input id="epochs" type='int' name='epochs' />
-        <br> Learning Rate - [recommended 0.01]&nbsp;&nbsp;&nbsp;&nbsp;
+        <br> Learning Rate - [recommended 0.01]
         <input id="learning_rate" type='float' name='learning_rate' />
-        <br> Batch Size - [recommended 64]&nbsp;&nbsp;&nbsp;&nbsp;
+        <br> Batch Size - [recommended 64]
         <input id="batch_size" type='int' name='batch_size' />
-        <br> Validation Split - range [0, 1]:&nbsp;&nbsp;&nbsp;&nbsp;
+        <br> Validation Split - range [0, 1]
         <input id="valid_split" type='float' name='valid_split' />
-        <br> First Hidden Layer Neurons:&nbsp;&nbsp;&nbsp;&nbsp;
+        <br> First Hidden Layer Neurons
         <input id="hidden1_size" type='int' name='hidden1_size' />
-        <br> Second Hidden Layer Neurons:&nbsp;&nbsp;&nbsp;&nbsp;
+        <br> Second Hidden Layer Neurons
         <input id="hidden2_size" type='int' name='hidden2_size' />
-        <br> Write perdictions to file: [0 - false, 1 - true]&nbsp;&nbsp;&nbsp;&nbsp;
+        <br> Write perdictions to file [0 - false, 1 - true]
         <input id="write_test_pred" type='int' name='write_test_pred' />
-        <br> Draw Loss Graphs: [0 - false, 1 - true]&nbsp;&nbsp;&nbsp;&nbsp;
+        <br> Draw Loss Graphs [0 - false, 1 - true]
         <input id="draw_loss_graph" type='int' name='draw_loss_graph' />
         <input type="submit" name="Send">
     </form>
