@@ -1,7 +1,7 @@
 {
   "name": "fashionmnist_web",
   "version": "1.0.0",
-  "description": "FashionMNIST neural nets examples",
+  "description": "MNIST neural nets examples",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
