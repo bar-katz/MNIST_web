@@ -31,12 +31,7 @@ A website for testing neural networks on MNIST data set using 2 hidden layers.
 
 4. Install required packages(_while in the directory_)
     ```XAML
-    npm install chalk
-    npm install express
-    npm install express-handlebars
-    npm install python-shell
-    npm install morgan
-    npm install querystring
+    npm install
     ```
 
 5. Run the server by typing `node server.js` in the cmd.
