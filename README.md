@@ -16,29 +16,17 @@ A website for testing neural networks on MNIST data set using 2 hidden layers.
     import torch
     print(torch.__version__)
     ```
-3. In the project's directory open terminal and write `npm init` then in the settings
-    ```XAML
-    name: (project-name) MNIST_web
-    version: 1.0.0
-    description: A web site for testing neural networks on MNIST data set using 2 hidden layers.
-    entry point: server.js
-    test command: // leave empty
-    git repository: // your repo or empty
-    keywords: // leave empty
-    author: // your name
-    license: // default
-    ```
 
-4. Install required packages(_while in the directory_)
+3. Install required packages(_while in the directory_)
     ```XAML
     npm install
     ```
 
-5. Run the server by typing `node server.js` in the cmd.
+4. Run the server by typing `node server.js` in the cmd.
 
-6. Your server is now ready for requests.<br/>In the browser type `http://localhost:8000/`, fill the form and send.
+5. Your server is now ready for requests.<br/>In the browser type `http://localhost:8000/`, fill the form and send.
 
-7. Wait for network's results.
+6. Wait for network's results.
 
 ## Syntax
 
