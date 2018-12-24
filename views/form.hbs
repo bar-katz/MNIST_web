@@ -1,7 +1,7 @@
 <!--action specifies that form be handled on the same page-->
 <div class="form-style">
     <h2>Enter Network Parmeters</h2>
-    <form id="net_calc_req" action="http://localhost:8000/" method="POST">
+    <form id="net_calc_req" action="/" method="POST">
         Neural Network Setting
         <select id="neural_net" name="neural_net">
             <option value="Basic">Basic nn</option>
@@ -54,7 +54,7 @@
                 var write_test_pred = $('#write_test_pred').val();
                 var draw_loss_graph = $('#draw_loss_graph').val();
 
-                $.post("http://localhost:8000/",
+                $.post("/",
                     {
                         neural_net: neural_net,
                         epochs: epochs,
