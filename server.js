@@ -12,7 +12,7 @@ const app = express();
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 
-var port = 8000;
+const port = process.env.PORT || 3000;
 
 app.use(morgan('common'))
 app.use(express.static(__dirname + '/assets'))
@@ -90,5 +90,5 @@ app.use(function (error, request, response, next) {
 
 // start server
 app.listen(port, function () {
-    console.log('Server started At http://localhost:' + port);
+    console.log(`Server started At port ${port}`);
 });
